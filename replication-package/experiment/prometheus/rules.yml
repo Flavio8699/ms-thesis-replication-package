@@ -1,0 +1,9 @@
+groups:
+- name: rules
+  rules:
+  - record: scaph_host_memory_used_bytes
+    expr: scaph_host_memory_total_bytes - scaph_host_memory_available_bytes
+  - record: scaph_host_disk_used_bytes
+    expr: scaph_host_disk_total_bytes - scaph_host_disk_available_bytes
+  - record: node_cpu_usage
+    expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{job="node",mode="idle"}[1m])) * 100)

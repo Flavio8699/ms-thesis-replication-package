@@ -1,0 +1,20 @@
+[HOST]
+IP = 127.0.0.1
+NAME = debian
+USER = username
+PASSWORD = secret
+
+[GITLAB]
+PROJECT_ID = 1
+API_URL = http://${HOST:IP}/api/v4/projects/${GITLAB:PROJECT_ID}
+PERSONAL_ACCESS_TOKEN = secret-token
+PIPELINE_TRIGGER_TOKEN = another-secret-token
+
+[PROMETHEUS]
+PORT = 9595
+API_URL = http://${HOST:IP}:${PROMETHEUS:PORT}/api/v1/query
+
+[EXPERIMENT]
+COOLDOWN_DURATION = 900
+AUTO_COOLDOWN = false
+AUTO_COOLDOWN_TEMP = 44

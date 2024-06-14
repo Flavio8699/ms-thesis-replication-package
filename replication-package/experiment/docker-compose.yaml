@@ -1,0 +1,35 @@
+version: '3.2'
+
+services:
+  scaphandre:
+    image: hubblo/scaphandre
+    ports:
+      - 8585:8080
+    volumes:
+      - type: bind
+        source: /proc
+        target: /proc
+      - type: bind
+        source: /sys/class/powercap
+        target: /sys/class/powercap
+    command: [ "prometheus" ]
+    networks:
+      - scaphandre-network
+
+  prometheus:
+    build:
+      context: ./prometheus
+    ports:
+      - 9595:9090
+    volumes:
+      - prometheus-data:/prometheus
+    networks:
+      - scaphandre-network
+
+volumes:
+  prometheus-data:
+
+
+networks:
+  scaphandre-network:
+    driver: bridge

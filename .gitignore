@@ -1,0 +1,15 @@
+._*
+*.log
+*.csv
+/*
+/*/
+.*/
+**/env/*
+config.ini
+.env
+**/__pycache__/*
+/replication-package/experiment/prometheus/data/*
+!/replication-package/
+!.gitignore
+!.gitkeep
+.DS_STORE
