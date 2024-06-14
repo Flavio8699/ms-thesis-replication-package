@@ -10,6 +10,8 @@ config.ini
 **/__pycache__/*
 /replication-package/experiment/prometheus/data/*
 !/replication-package/
+!/replication-package-RQ3/
+!/papers/
 !.gitignore
 !.gitkeep
 .DS_STORE

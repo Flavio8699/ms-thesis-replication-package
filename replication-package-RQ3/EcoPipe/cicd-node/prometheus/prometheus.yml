@@ -1,0 +1,30 @@
+# my global config
+global:
+  scrape_interval:     10s # Set the scrape interval to every 15 seconds. Default is ev
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 mi
+  # scrape_timeout is set to the global default (10s).
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+      monitor: 'scaphandre-monitor'
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_in
+rule_files:
+  - "rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from th
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['10.186.2.11:9595']
+
+  - job_name: 'scaphandre'
+    static_configs:
+      - targets: ['10.186.2.11:8585']
+
+  - job_name: 'node'
+    static_configs:
+      - targets: ['10.186.2.11:9100']

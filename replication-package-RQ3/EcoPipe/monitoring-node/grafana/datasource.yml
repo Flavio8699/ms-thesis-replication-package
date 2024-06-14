@@ -1,0 +1,48 @@
+# config file version
+apiVersion: 1
+
+
+datasources:
+- name: postgresql
+  type: postgres
+  url: 10.186.4.22:5432
+  user: root
+  secureJsonData:
+    password: 'root'
+  jsonData:
+    database: msthesis
+    sslmode: 'disable' # disable/require/verify-ca/verify-full
+    maxOpenConns: 100 # Grafana v5.4+
+    maxIdleConns: 100 # Grafana v5.4+
+    maxIdleConnsAuto: true # Grafana v9.5.1+
+    connMaxLifetime: 14400 # Grafana v5.4+
+    postgresVersion: 903 # 903=9.3, 904=9.4, 905=9.5, 906=9.6, 1000=10
+    timescaledb: false
+
+- name: prometheus-debian
+  # <string, required> datasource type. Required
+  type: prometheus
+  # <string, required> access mode. direct or proxy. Required
+  access: proxy
+  # <int> org id. will default to orgId 1 if not specified
+  orgId: 1
+  # <string> url
+  url: http://10.186.2.11:9595
+  isDefault: false
+  version: 1
+  # <bool> allow users to edit datasources from the UI.
+  editable: true
+
+- name: prometheus-lamport
+  # <string, required> datasource type. Required
+  type: prometheus
+  # <string, required> access mode. direct or proxy. Required
+  access: proxy
+  # <int> org id. will default to orgId 1 if not specified
+  orgId: 1
+  # <string> url
+  url: http://10.186.2.16:9595
+  isDefault: false
+  version: 1
+  # <bool> allow users to edit datasources from the UI.
+  editable: true
