@@ -1,25 +1,28 @@
-# 1. Setup virtual environment
+# Introduction
 
-1. Install virtualenv
+EcoPipe is a software-based framework for continuous energy consumption monitoring of deployment pipelines in a in-house infrastructure. It allows DevOps engineers to analyse the energy consumption of their pipelines and gain awareness of the associated environmental impact.
 
-```shell
-sudo apt-get install python3-venv
-```
+# Pre-requisites
 
-2. Create and activate virtual environment
+The following software has to be installed on both the CI/CD node and monitoring node:
 
-```shell
-python3 -m venv env
-source env/bin/activate
-```
+| **Software**   | **Version** |
+| -------------- | ----------- |
+| Docker         | 24.0.5      |
+| Docker Compose | 2.24.7      |
 
-3. Install requirements
+The following software has also to be installed on the CI/CD node:
 
-```shell
-pip install -r requirements.txt
-```
+| **Software**  | **Version** |
+| ------------- | ----------- |
+| GitLab        | 15.10.3-ee  |
+| GitLab Runner | 16.2.1      |
 
-# 2. Setup CI/CD node
+# Setup
+
+This section contains the detailed guidelines on how to setup the CI/CD node (processing node containing the CI/CD service) and monitoring node (processing node which will host the framework). In a small environment, 1 processing node can host both the CI/CD service & the EcoPipe framework.
+
+## 1. Setup CI/CD node
 
 1. Navigate to cicd-node folder
 
@@ -35,7 +38,7 @@ cd cicd-node/
 docker compose up -d
 ```
 
-# 3. Setup monitoring node
+## 2. Setup monitoring node
 
 1. Navigate to monitoring-node folder
 
@@ -43,17 +46,38 @@ docker compose up -d
 cd monitoring-node/
 ```
 
-## 3.1 Setup Grafana & PostgreSQL
+### 2.1 Setup virtual environment
 
-2. Modify sections `[POSTGRES]` and `[GRAFANA]` in file _.env_
-3. Configure Grafana datasources in `grafana/datasource.yml`
-4. Start containers
+2. Install virtualenv
+
+```shell
+sudo apt-get install python3-venv
+```
+
+3. Create and activate virtual environment
+
+```shell
+python3 -m venv env
+source env/bin/activate
+```
+
+4. Install requirements
+
+```shell
+pip install -r requirements.txt
+```
+
+### 2.2 Setup Grafana & PostgreSQL
+
+5. Modify sections `[POSTGRES]` and `[GRAFANA]` in file _.env_
+6. Configure Grafana datasources in `grafana/datasource.yml`
+7. Start containers
 
 ```shell
 docker compose up -d
 ```
 
-5. Import database schema
+8. Import database schema
 
 ```shell
 docker exec -i <CONTAINER> psql -U <DB_USER> -d <DB_NAME> < db.sql
@@ -61,27 +85,27 @@ docker exec -i <CONTAINER> psql -U <DB_USER> -d <DB_NAME> < db.sql
 
 _Note: replace necessary values_
 
-## 3.2 Setup Flask API
+### 2.3 Setup Flask API
 
-6. Modify section `[API]` in file _.env_
-7. Navigate to API folder
+9. Modify section `[API]` in file _.env_
+10. Navigate to API folder
 
 ```shell
 cd api/
 ```
 
-8. Start API in the background
+11. Start API in the background
 
 ```shell
 nohup python app.py > output.log &
 ```
 
-## 3.3 Connect GitLab instance
+### 2.4 Connect GitLab instance
 
-9. In GitLab, select the project to be monitored
-10. Go to `Settings > Webhooks` and create a new webhook
+12. In GitLab, select the project to be monitored
+13. Go to `Settings > Webhooks` and create a new webhook
     - **URL**: `http://<API_HOST>:<API_PORT>/webhook`
     - **Secret token:** `GITLAB_TOKEN` from _.env_ file
     - **Trigger:** select `Pipeline events`
     - **SSL verification:** disable if not using SSL, keep otherwise
-11. Press `Add webhook`
+14. Press `Add webhook`
