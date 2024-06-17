@@ -1,10 +1,10 @@
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
 import os
-import db 
+import db
 import helper
 from urllib.parse import urlparse
-#import time
+# import time
 
 app = Flask(__name__)
 
@@ -12,6 +12,7 @@ load_dotenv('../.env')
 
 for key, value in os.environ.items():
     app.config[key] = value
+
 
 @app.route('/webhook', methods=['POST'])
 def gitlab_webhook():
@@ -41,7 +42,7 @@ def gitlab_webhook():
             db.create_pipeline_if_not_exists(cursor, pipeline, host)
 
             stages = helper.get_jobs_by_stage(data)
-            
+
             for stage_name, jobs in stages.items():
                 stage_started_at = min(job['started_at'] for job in jobs)
                 stage_finished_at = max(job['finished_at'] for job in jobs)
@@ -61,9 +62,10 @@ def gitlab_webhook():
                     job['pipeline_id'] = pipeline['id']
 
                     db.create_pipeline_job(cursor, job, host)
-        
+
             for date, consumption in helper.get_pipeline_consumption_rate(host, pipeline).items():
-                db.log_pipeline_consumption(cursor, pipeline['id'], host, consumption, date)
+                db.log_pipeline_consumption(
+                    cursor, pipeline['id'], host, consumption, date)
 
     db.commit_and_close(connection)
 
@@ -73,10 +75,12 @@ def gitlab_webhook():
     if pipeline['status'] == 'success':
         start_time = pipeline['finished_at'].timestamp()
 
-        with open('execution-time/data.csv', 'a') as file:
+        with open('timing.csv', 'a') as file:
             file.write(f'{host},{start_time},{end_time}\n')
     """
     return jsonify({'message': 'Received'}), 200
 
+
 if __name__ == '__main__':
-    app.run(debug=True, host=app.config['API_HOST'], port=app.config['API_PORT'])
+    app.run(
+        debug=True, host=app.config['API_HOST'], port=app.config['API_PORT'])
