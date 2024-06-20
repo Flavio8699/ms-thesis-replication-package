@@ -4,7 +4,7 @@ This folder contains the data files and analysis related to the efficiency exper
 
 # Reproduce experiment
 
-1. Follow step `2.1 Setup virtual environment` of `EcoPipe/README.md`
+1. Follow step `Setup virtual environment` of `EcoPipe/README.md`
 2. Open `efficiency-analysis.ipynb` file
 3. Press `Run All`
 
@@ -32,7 +32,7 @@ _Note:_ if the group to be collect is **experimental**, the EcoPipe framework ha
 
 ## 2. Setup & execution
 
-1. Follow step `2.1 Setup virtual environment` of `EcoPipe/README.md`
+1. Follow step `Setup virtual environment` of `EcoPipe/README.md`
 2. Navigate to experiment folder
 
 ```

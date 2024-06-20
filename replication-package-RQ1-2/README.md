@@ -1,33 +1,35 @@
-The software versions utilised are listed below.
+# Introduction
 
-| **Software**     | **Version**    |
-|------------------|----------------|
-| GitLab           | 15.10.3-ee     |
-| GitLab Runner    | 16.2.1         |
-| Docker           | 24.0.5         |
-| Docker Compose   | 2.24.7         |
-| Prometheus       | 2.51.2         |
-| Scaphandre       | 1.0.0          |
+This is the replication package of the paper: "title missing"
 
-# 1. Setup virtual environment
-1. Install virtualenv
-```shell
-sudo apt-get install python3-venv
-```
+**License**:
+The content of this replication package is licensed under the MIT license.
 
-2. Create and activate virtual environment
-```shell
-python3 -m venv env
-source env/bin/activate
-```
+# Content
 
-3. Install requirements
-```shell
-pip install -r requirements.txt
-```
+The replication package contains the following folders/files:
 
-# 2. Conduct experiment
-Instructions [here](https://github.com/Flavio8699/ms-thesis/blob/main/replication-package/experiment/README.md).
+## 1. Experiment
 
-# 3. Continuous monitoring
-Instructions [here](https://github.com/Flavio8699/ms-thesis/blob/main/replication-package/monitoring/README.md).
+This folder contains the experiment source code files and results. It contains:
+
+- _datasets_: the data files as a result of executing the experiment
+- _logs_: associated logs produced by the experiment script
+- _prometheus_: files related to the Prometheus instance
+- _config.ini.template_: configuration file template for the experiment
+- _docker-compose.yaml_: docker compose file to set up Prometheus & Scaphandre
+- _measurement.py_: experiment script
+- _analysis.ipynb_: Jupyter Notebook containing the analysis of the results
+- _README.md_: guidelines to setup the EcoPipe framework on both processing nodes
+- _requirements.txt_: dependencies to be installed in a Python virtual environment
+
+## 2. Temperature
+
+This folder contains the data files and analysis related to the temperature experiment. The objective is to assess the temperature impact on the results obtained from the first experiment by comparing the same data executed under 22 and 24 degrees. It contains:
+
+- _datasets_: the data files as a result of executing the experiment
+- _logs_: associated logs produced by the experiment script
+- _experiment_: folder containing the source files to reproduce the experiment
+- _README.md_: guidelines to use the produced data and redo the experiment
+- _analysis-debian.ipynb_: Jupyter Notebook containing the analysis of the produced data files for **processing node 1**
+- _analysis-lamport.ipynb_: Jupyter Notebook containing the analysis of the produced data files for **processing node 2**

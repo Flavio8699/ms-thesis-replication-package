@@ -4,7 +4,7 @@ This folder contains the data files and analysis related to the timing experimen
 
 # Reproduce experiment
 
-1. Follow step `2.1 Setup virtual environment` of `EcoPipe/README.md`
+1. Follow step `Setup virtual environment` of `EcoPipe/README.md`
 2. Open `timing-analysis.ipynb` file
 3. Press `Run All`
 
