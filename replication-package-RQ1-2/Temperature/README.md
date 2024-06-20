@@ -5,7 +5,7 @@ This folder contains the data files and analysis related to the temperature expe
 # Reproduce experiment
 
 1. Follow step `Setup virtual environment` of `Experiment/README.md`
-2. Open `analysis.ipynb` file
+2. Open `analysis-debian.ipynb` or `analysis-lamport.ipynb` file
 3. Press `Run All`
 
 # Replicate experiment
