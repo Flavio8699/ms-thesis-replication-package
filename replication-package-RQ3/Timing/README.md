@@ -32,11 +32,12 @@ _Note:_ the EcoPipe framework has to be configured and running on the monitoring
 
 ## 2. Setup & execution
 
-1. In the monitoring node in file `api/app.py`, uncomment the following lines:
+1. Follow step `Setup case study repository` of `EcoPipe/README.md`
+2. In the monitoring node in file `api/app.py`, uncomment the following lines:
 
    - Line 7
    - Line 73-79
 
-2. Execute the desired amount of pipelines
+3. Execute the desired amount of pipelines
 
-3. The file `api/timing.csv` is created with the results
+4. The file `api/timing.csv` is created with the results

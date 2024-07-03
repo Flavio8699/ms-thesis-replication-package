@@ -1,8 +1,16 @@
 # Introduction
 
-intro missing
+This folder contains the data files and analysis related to the experiment conducted on the pipeline energy consumption. The objective is to assess the pipeline energy consumption and execution duration on both processing nodes.
 
-# Pre-requisites
+# Reproduce experiment
+
+1. Follow step `Setup virtual environment` below in the replication section
+2. Open `analysis.ipynb` file
+3. Press `Run All`
+
+# Replicate experiment
+
+## 1. Pre-requisites
 
 The following software has to be installed on the processing node node:
 
@@ -13,13 +21,11 @@ The following software has to be installed on the processing node node:
 | Docker         | 24.0.5      |
 | Docker Compose | 2.24.7      |
 
-Furthermore, a repository with a project has to be set up on GitLab.
-
-# Setup
+## 2. Setup
 
 This section contains the detailed guidelines on how to setup the processing node in order to execute the experiment.
 
-## 1. Setup virtual environment
+### Setup virtual environment
 
 1. Install virtualenv
 
@@ -40,9 +46,9 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-## 2. Setup Scaphandre & Prometheus
+### Setup Scaphandre & Prometheus
 
-1. Enable GitLab node exporter
+1. Enable GitLab node exporter ([help](https://docs.gitlab.com/ee/administration/monitoring/prometheus/gitlab_exporter.html))
 2. Change `10.186.2.11` to the host IP in `/prometheus/prometheus.yml`
 3. Start containers
 
@@ -50,7 +56,20 @@ pip install -r requirements.txt
 docker compose up -d
 ```
 
-# Configure & execute experiment
+### Setup case study repository
+
+1. Create a project on GitLab
+2. Clone https://gitlab.com/fdroid/fdroidclient
+3. Switch to commit hash **429eae6f9ed209c6d830f5e6213f4bf70c78c94e** from 11/04/2024
+4. In file `HttpManagerInstrumentationTest.kt` comment the following failing tests:
+   - checkTls12Support
+   - checkTlsSupport
+   - testNoTls10
+   - testNoTls11
+5. Push the code to GitLab
+6. Repository is ready
+
+## 3. Configure & execute experiment
 
 1. Modify _config.ini_
 2. Execute experiment

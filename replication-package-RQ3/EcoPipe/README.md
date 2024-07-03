@@ -30,13 +30,26 @@ This section contains the detailed guidelines on how to setup the CI/CD node (pr
 cd cicd-node/
 ```
 
-2. Enable GitLab node exporter
+2. Enable GitLab node exporter ([help](https://docs.gitlab.com/ee/administration/monitoring/prometheus/gitlab_exporter.html))
 3. Change `10.186.2.11` to the host IP in `/prometheus/prometheus.yml`
 4. Start containers
 
 ```shell
 docker compose up -d
 ```
+
+### 1.1. Setup case study repository
+
+2. Create a project on GitLab
+3. Clone https://gitlab.com/fdroid/fdroidclient
+4. Switch to commit hash **429eae6f9ed209c6d830f5e6213f4bf70c78c94e** from 11/04/2024
+5. In file `HttpManagerInstrumentationTest.kt` comment the following failing tests:
+   - checkTls12Support
+   - checkTlsSupport
+   - testNoTls10
+   - testNoTls11
+6. Push the code to GitLab
+7. Repository is ready
 
 ## 2. Setup monitoring node
 

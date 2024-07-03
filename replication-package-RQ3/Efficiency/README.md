@@ -33,14 +33,15 @@ _Note:_ if the group to be collect is **experimental**, the EcoPipe framework ha
 ## 2. Setup & execution
 
 1. Follow step `Setup virtual environment` of `EcoPipe/README.md`
-2. Navigate to experiment folder
+2. Follow step `Setup case study repository` of `EcoPipe/README.md`
+3. Navigate to experiment folder
 
 ```
 cd experiment/
 ```
 
-3. Modify _config.ini_
-4. Execute experiment
+4. Modify _config.ini_
+5. Execute experiment
 
 ```shell
 python measurement.py --sample S --type [control|experimental]
