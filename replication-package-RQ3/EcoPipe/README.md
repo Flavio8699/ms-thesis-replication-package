@@ -38,18 +38,25 @@ cd cicd-node/
 docker compose up -d
 ```
 
-### 1.1. Setup case study repository
+### 1.1 Setup case study repository
 
-2. Create a project on GitLab
-3. Clone https://gitlab.com/fdroid/fdroidclient
-4. Switch to commit hash **429eae6f9ed209c6d830f5e6213f4bf70c78c94e** from 11/04/2024
-5. In file `HttpManagerInstrumentationTest.kt` comment the following failing tests:
+5. Create a project on GitLab
+6. Clone https://gitlab.com/fdroid/fdroidclient
+7. Switch to commit hash **429eae6f9ed209c6d830f5e6213f4bf70c78c94e** from 11/04/2024
+8. In file `HttpManagerInstrumentationTest.kt` comment the following failing tests:
    - checkTls12Support
    - checkTlsSupport
    - testNoTls10
    - testNoTls11
-6. Push the code to GitLab
-7. Repository is ready
+9. Push the code to GitLab
+10. Repository is ready
+
+### 1.2 Enable virtualisation
+
+11. Enable virtualisation in the BIOS
+12. In the file `/etc/gitlab-runner/config.toml`, for each runner under `[runners.docker]` add the following line:
+
+- `devices = ["/dev/kvm"]`
 
 ## 2. Setup monitoring node
 

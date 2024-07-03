@@ -10,6 +10,6 @@ This folder contains the data files and analysis related to the temperature expe
 
 # Replicate experiment
 
-1. Follow steps of `Experiment/README.md`
+1. Follow replication steps of `Experiment/README.md`
 2. Adjust room temperature
 3. Execute experiment

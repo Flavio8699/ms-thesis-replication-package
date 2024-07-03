@@ -28,16 +28,13 @@ The following software has also to be installed on the CI/CD node:
 | GitLab        | 15.10.3-ee  |
 | GitLab Runner | 16.2.1      |
 
-_Note:_ the EcoPipe framework has to be configured and running on the monitoring node & be connected to the CI/CD service on the CI/CD node.
-
 ## 2. Setup & execution
 
-1. Follow step `Setup case study repository` of `EcoPipe/README.md`
+1. Follow steps of `EcoPipe/README.md`
 2. In the monitoring node in file `api/app.py`, uncomment the following lines:
 
    - Line 7
    - Line 73-79
 
 3. Execute the desired amount of pipelines
-
 4. The file `api/timing.csv` is created with the results

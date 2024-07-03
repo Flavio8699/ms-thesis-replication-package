@@ -28,20 +28,17 @@ The following software has also to be installed on the CI/CD node:
 | GitLab        | 15.10.3-ee  |
 | GitLab Runner | 16.2.1      |
 
-_Note:_ if the group to be collect is **experimental**, the EcoPipe framework has to be configured and running on the monitoring node & be connected to the CI/CD service on the CI/CD node.
-
 ## 2. Setup & execution
 
-1. Follow step `Setup virtual environment` of `EcoPipe/README.md`
-2. Follow step `Setup case study repository` of `EcoPipe/README.md`
-3. Navigate to experiment folder
+1. Follow steps of `EcoPipe/README.md` except for 2.2, 2.3 and 2.4 **if** the group is **control**, otherwise all the steps
+2. Navigate to experiment folder
 
 ```
 cd experiment/
 ```
 
-4. Modify _config.ini_
-5. Execute experiment
+3. Modify _config.ini_
+4. Execute experiment
 
 ```shell
 python measurement.py --sample S --type [control|experimental]
