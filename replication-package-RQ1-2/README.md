@@ -13,13 +13,14 @@ The replication package contains the following folders/files:
 
 This folder contains the experiment source code files and results. It contains:
 
+- _analysis.ipynb_: Jupyter Notebook containing the analysis of the results
 - _datasets_: the data files as a result of executing the experiment
 - _logs_: associated logs produced by the experiment script
 - _prometheus_: files related to the Prometheus instance
 - _config.ini.template_: configuration file template for the experiment
 - _docker-compose.yaml_: docker compose file to set up Prometheus & Scaphandre
 - _measurement.py_: experiment script
-- _analysis.ipynb_: Jupyter Notebook containing the analysis of the results
+- _nrg_pc_205_page_tabular.tsv_: average EU kWh prices per year (from Eurostat)
 - _README.md_: guidelines to setup the EcoPipe framework on both processing nodes
 - _requirements.txt_: dependencies to be installed in a Python virtual environment
 
