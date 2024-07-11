@@ -1,14 +1,1 @@
-._*
-/*
-/*/
-.*/
-**/env/*
-config.ini
-.env
-**/__pycache__/*
-!/replication-package-RQ1-2/
-!/replication-package-RQ3/
-!/papers/
-!.gitignore
-!.gitkeep
 .DS_STORE
